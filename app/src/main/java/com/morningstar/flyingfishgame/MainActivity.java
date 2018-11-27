@@ -32,4 +32,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 0, INTERVAL);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 }

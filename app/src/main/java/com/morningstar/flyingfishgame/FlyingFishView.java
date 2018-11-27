@@ -61,7 +61,7 @@ class FlyingFishView extends View {
         life[1] = BitmapFactory.decodeResource(getResources(), R.drawable.heart_grey);
 
         fishYAxis = 550;
-        life_count = 3;
+        life_count = 4;
 
         yellowPaint = new Paint();
         yellowPaint.setColor(Color.YELLOW);
@@ -110,13 +110,13 @@ class FlyingFishView extends View {
 
         canvas.drawText("Score: " + score, 30, 60, scorePaint);
 
-        for (int i = 3; i > 0; i--) {
+        for (int i = 1; i <= 3; i++) {
             int x = canvasWidth - (i * 100);
             int y = 10;
-            if (i > life_count) {
-                canvas.drawBitmap(life[1], x, y, null);
-            } else
+            if (i <= life_count) {
                 canvas.drawBitmap(life[0], x, y, null);
+            } else
+                canvas.drawBitmap(life[1], x, y, null);
         }
     }
 
@@ -133,7 +133,7 @@ class FlyingFishView extends View {
 //            score-=20;
             life_count -= 1;
 
-            if (life_count == 0) {
+            if ((life_count + 1) == 0) {
                 @SuppressLint("DrawAllocation") Intent intent = new Intent(getContext(), GameOverActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
